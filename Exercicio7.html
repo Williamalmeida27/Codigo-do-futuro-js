@@ -1,0 +1,95 @@
+Francisco precisa de um sistema para gerenciar sua escola
+Neste sistema precisamos capturar o aluno com as seguintes informaçoes
+
+aluno
+- nome
+- matricula
+- notas
+
+as notas podem ser quantas o sistema quiser, ou seja deixe o usuário escolher a quantidade de notas
+
+neste sistema você irá precisar de um menu onde irá fazer o:
+Cadastro de alunos, digitando nome e matricula e notas
+vai precisar de um relatório, onde irá mostrar a lista dos alunos
+com nome, matricula, notas, média, aprovado/reprovado/recuperação
+Critério:
+se a nota for >= 7 aprovado
+se a nota for entre 5 e menor que 7 - Recuperação
+se a nota for menor que 5 - Reprovado
+
+<script>
+    debugger
+    opcaoSelecionada = parseInt(prompt(`    Olá, bem vindos ao sistema de gerenciamento escolar
+                Selecione a seguir a opção desejada:
+                 ---------------------------   
+                 |   1) Cadastrar alunos   |
+                 |   2) Relatório          |
+                 |   3) Sair               |            
+                 ---------------------------
+            `))          
+
+            var alunos = []
+            var notas = []
+
+switch (opcaoSelecionada) {
+    case 1:
+           alert(`Opção selecionada ${opcaoSelecionada}`)
+            quantidadeNotas = parseInt(prompt("Quantidade de notas?"))
+            
+                let nome = prompt("Digite o nome do aluno: ")
+                let matricula = parseInt(prompt("Digite a matricula do aluno: "))
+
+                i = 0
+                while(i < quantidadeNotas){
+                    notas.push(Number(prompt(`Você deve declarar ${quantidadeNotas} notas`)))
+                    i++
+                }
+
+                notasTexto = notas.toString()
+
+                somaNotas = notas.reduce(function(somaNotas, i){
+                    return somaNotas +i
+                })
+
+                media = somaNotas / quantidadeNotas
+
+                if (media >= 7 ){
+                    situacao = "Aprovado"
+                } else if (media >= 5 && media < 7) {
+                    situacao = "Recuperação"
+                } else {
+                    situacao = "Reprovado"
+                }
+                
+                alunos.push({
+                    'nome': nome,
+                    'matricula': matricula, 
+                    'notas': notasTexto, 
+                    'media': media, 
+                    'situacao': situacao
+                })
+
+
+    break;                           
+            
+      
+            
+    case 2:
+    alert(`Opção selecionada ${opcaoSelecionada}`)
+    console.table(alunos)
+
+    break;
+
+    case 3:
+        alert("Tenha um ótimo dia!")
+
+            break;
+
+    
+        default:
+            alert("Opção inválida")
+            break;
+}
+
+
+</script>
